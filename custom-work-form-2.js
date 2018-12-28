@@ -90,9 +90,41 @@
         //     SubmitError();
         // });
 
-        console.log('email validated');
-        HideErrorMessage();
-        emailSuccess = true;
+
+
+
+
+
+
+
+        if(email === 'test@test.com'){
+            console.log('email validated');
+            HideErrorMessage();
+            emailSuccess = true;
+        }
+        else{
+            console.log('email not validated');
+            ErrorMessage('Your email does not match what you have on file for primary email address. Please correct it or go to your account on Jeweler Portal to update it.');
+            failedOnce = true;
+            emailSuccess = false;
+            SubmitError();
+            e.preventDefault();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         if(!emailSuccess){
             throw 'resetting';
