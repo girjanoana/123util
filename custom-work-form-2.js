@@ -10,7 +10,7 @@
                 submitButton.on('click', function (e) {
                     e.preventDefault();
                     try {
-                        onSubmitForm();
+                        onSubmitForm(e);
                     }catch (err) {
                         console.log('err', err);
                         return false;
@@ -20,25 +20,23 @@
         });
     });
 
-    let jewelerIdFieldHash = '0000000c',
-        jrcField = '0000003a',
-        jrcChoiceId = '00000038_1',
+    let jewelerIdFieldHash = '0000000b',
+        jrcField = '00000034',
+        jrcChoiceId = '00000032_1',
         totalSpanRole = 'calculation-total',
-        agreementId = '0000003c_0',
-        agreementLabelHash = '0000003c',
+        agreementId = '00000036_0',
+        agreementLabelHash = '00000036',
         sendButton = 'SendButton',
-        errorMessageContainerHash = '00000008',
+        errorMessageContainerHash = '00000038',
 
         nameHash = '0000000a',
         cityHash = '0000000d',
-        emailHash = '00000011',
-        phone1Hash = '00000013',
-        phone2Hash = '00000013',
-        phone3Hash = '00000013',
+        emailHash = '00000010',
+        phoneHash = '00000011'
 
-        failedOnce = false;
+    failedOnce = false;
 
-    function onSubmitForm(){
+    function onSubmitForm(e){
         let jrc = $('div[data-hash="' + jrcField +'"] input').val(),
             jewelerId = $('div[data-hash="' + jewelerIdFieldHash +'"] input').val(),
             jrcChoice = $('input#'+ jrcChoiceId).is(':checked'),
@@ -63,7 +61,8 @@
 
         console.log('start verify email');
         $.ajax({
-            url: 'https://jewelersapi.premierdesigns.com/wix/validateEmail/' + jewelerId + '?email=' + email,
+            //url: 'https://jewelersapi.premierdesigns.com/wix/validateEmail/' + jewelerId + '?email=' + email,
+            url: 'https://jewelersapi.premierdesigns.local/wix/validateEmail/' + jewelerId + '?email=' + email,
             method: 'GET',
             dataType: 'json',
             crossDomain: true,
@@ -118,6 +117,7 @@
             return;
         }
 
+        /*
         let phone1 = $('div[data-hash="' + phone1Hash +'"] input').val(),
             phone2 = $('div[data-hash="' + phone2Hash +'"] input').val(),
             phone3 = $('div[data-hash="' + phone3Hash +'"] input').val();
@@ -128,6 +128,7 @@
         if(+phone1 < 0 || +phone2 < 0 || +phone3 < 0) {
             return;
         }
+        */
 
 
         let agreement = $('input#' + agreementId).is(':checked');
@@ -235,7 +236,7 @@
         let total = $('span[data-role="' +totalSpanRole + '"]').text(),
             label = $('div[data-hash="' + agreementLabelHash + '"]').find('span[data-role="option-text"]');
 
-        if(label.html().length) {
+        if(label.length) {
             label.html(label.html().replace('$TotalToBeCharged$', '<span id="agree-total">' + total + '</span>'));
             $('#agree-total').html(total);
         }
