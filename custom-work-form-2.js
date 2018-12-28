@@ -239,7 +239,7 @@
             label = $('div[data-hash="' + agreementLabelHash + '"]').find('span[data-role="option-text"]');
 
         if(label.length) {
-            label.html(label.h`tml().replace('$TotalToBeCharged$', '<span id="agree-total">' + total + '</span>'));
+            label.html(label.html().replace('$TotalToBeCharged$', '<span id="agree-total">' + total + '</span>'));
             $('#agree-total').html(total);
         }
     }
