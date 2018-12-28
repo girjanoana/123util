@@ -213,10 +213,12 @@
 
     function ErrorMessage(message){
         let errorMessageContainer = $('div[data-hash="'+errorMessageContainerHash+'"]');
-        if(errorMessageContainer.find('h3[data-role="error-message"]').length > 0){
-            errorMessageContainer.find('h3[data-role="error-message"]').html(message);
+        let errorMessageHeader = errorMessageContainer.find('h3[data-role="error-message"]');
+        if(errorMessageHeader.length > 0){
+            errorMessageHeader.html(message);
+            errorMessageHeader.visibility = 'visible !important';
         }else {
-            errorMessageContainer.append('<h3 style="color:red" data-role="error-message">' + message + '</h3>');
+            errorMessageContainer.append('<h3 style="color:red; visibility: visible !important;" data-role="error-message">' + message + '</h3>');
         }
         $('html, body').animate({scrollTop: 0}, 800);
     }
@@ -237,7 +239,7 @@
             label = $('div[data-hash="' + agreementLabelHash + '"]').find('span[data-role="option-text"]');
 
         if(label.length) {
-            label.html(label.html().replace('$TotalToBeCharged$', '<span id="agree-total">' + total + '</span>'));
+            label.html(label.h`tml().replace('$TotalToBeCharged$', '<span id="agree-total">' + total + '</span>'));
             $('#agree-total').html(total);
         }
     }
