@@ -117,19 +117,14 @@
             return;
         }
 
-        /*
-        let phone1 = $('div[data-hash="' + phone1Hash +'"] input').val(),
-            phone2 = $('div[data-hash="' + phone2Hash +'"] input').val(),
-            phone3 = $('div[data-hash="' + phone3Hash +'"] input').val();
+        let phone = $('div[data-hash="' + phoneHash +'"] input').val();
 
-        if(phone1 === '' || phone2 === '' || phone3 === '' || isNaN(phone1) || isNaN(phone2) || isNaN(phone2)){
+        if(phone === '' isNaN(phone)){
             return;
         }
-        if(+phone1 < 0 || +phone2 < 0 || +phone3 < 0) {
+        if(+phone < 0) {
             return;
         }
-        */
-
 
         let agreement = $('input#' + agreementId).is(':checked');
         if(!agreement) {
