@@ -60,70 +60,35 @@
         let emailSuccess = false;
 
         console.log('start verify email');
-        // $.ajax({
-        //     //url: 'https://jewelersapi.premierdesigns.com/wix/validateEmail/' + jewelerId + '?email=' + email,
-        //     url: 'https://jewelersapi.premierdesigns.local/wix/validateEmail/' + jewelerId + '?email=' + email,
-        //     method: 'GET',
-        //     dataType: 'json',
-        //     crossDomain: true,
-        //     async: false
-        // }).done(function(data, textStatus, jqXHR) {
-        //     var result = data['data'];
-        //     if(result['valid']){
-        //         console.log('email validated');
-        //         HideErrorMessage();
-        //         emailSuccess = true;
-        //     }
-        //     else{
-        //         console.log('email not validated');
-        //         ErrorMessage('Your email does not match what you have on file for primary email address. Please correct it or go to your account on Jeweler Portal to update it.');
-        //         failedOnce = true;
-        //         emailSuccess = false;
-        //         SubmitError();
-        //         e.preventDefault();
-        //     }
-        // }).fail(function(xhr, status, error) {
-        //     ErrorMessage('Sorry, we had trouble validating your email address. Please try again later.');
-        //     failedOnce = true;
-        //     emailSuccess = false;
-        //     e.preventDefault();
-        //     SubmitError();
-        // });
-
-
-
-
-
-
-
-
-        if(email === 'test@test.com'){
-            console.log('email validated');
-            HideErrorMessage();
-            emailSuccess = true;
-        }
-        else{
-            console.log('email not validated');
-            ErrorMessage('Your email does not match what you have on file for primary email address. Please correct it or go to your account on Jeweler Portal to update it.');
+        $.ajax({
+            //url: 'https://jewelersapi.premierdesigns.com/wix/validateEmail/' + jewelerId + '?email=' + email,
+            url: 'https://jewelersapi.premierdesigns.local/wix/validateEmail/' + jewelerId + '?email=' + email,
+            method: 'GET',
+            dataType: 'json',
+            crossDomain: true,
+            async: false
+        }).done(function(data, textStatus, jqXHR) {
+            var result = data['data'];
+            if(result['valid']){
+                console.log('email validated');
+                HideErrorMessage();
+                emailSuccess = true;
+            }
+            else{
+                console.log('email not validated');
+                ErrorMessage('Your email does not match what you have on file for primary email address. Please correct it or go to your account on Jeweler Portal to update it.');
+                failedOnce = true;
+                emailSuccess = false;
+                SubmitError();
+                e.preventDefault();
+            }
+        }).fail(function(xhr, status, error) {
+            ErrorMessage('Sorry, we had trouble validating your email address. Please try again later.');
             failedOnce = true;
             emailSuccess = false;
             SubmitError();
             e.preventDefault();
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        });
 
 
         if(!emailSuccess){
