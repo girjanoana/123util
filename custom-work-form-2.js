@@ -213,10 +213,10 @@
 
     function ErrorMessage(message){
         let errorMessageContainer = $('div[data-hash="'+errorMessageContainerHash+'"]');
-        let errorMessageHeader = errorMessageContainer.find('h3[data-role="error-message"]');
-        if(errorMessageHeader.length > 0){
-            errorMessageHeader.html(message);
-            errorMessageHeader.visibility = 'visible !important';
+        let errorMessageHeading = errorMessageContainer.find('h3[data-role="error-message"]');
+        if(errorMessageHeading.length > 0){
+            errorMessageHeading.html(message);
+            errorMessageHeading.visibility = 'visible !important';
         }else {
             errorMessageContainer.append('<h3 style="color:red; visibility: visible !important;" data-role="error-message">' + message + '</h3>');
         }
