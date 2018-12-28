@@ -155,7 +155,7 @@
 
         let phone = $('div[data-hash="' + phoneHash +'"] input').val();
 
-        if(phone === '' isNaN(phone)){
+        if(phone === '' || isNaN(phone)){
             return;
         }
         if(+phone < 0) {
