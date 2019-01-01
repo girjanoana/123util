@@ -62,7 +62,7 @@
         console.log('start verify email');
         $.ajax({
             //url: 'https://jewelersapi.premierdesigns.com/wix/validateEmail/' + jewelerId + '?email=' + email,
-            url: 'https://jewelersapi.premierdesigns.local/wix/validateEmail/' + jewelerId + '?email=' + email,
+            url: 'https://jewelersapi.uat.premierdesigns.com/wix/validateEmail/' + jewelerId + '?email=' + email,
             method: 'GET',
             dataType: 'json',
             crossDomain: true,
